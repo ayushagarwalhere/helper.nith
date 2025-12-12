@@ -41,6 +41,11 @@ body {
     font-family: 'robert-reg';
     src: url('/fonts/robert-regular.woff2') format('woff2');
   }
+
+  @font-face {
+    font-family: 'poppins';
+    src: url('/fonts/poppins.woff2') format('woff2');
+  }  
 }
 
 @layer utilities {
@@ -50,7 +55,7 @@ body {
   }
 
   .nav-hover-btn {
-    @apply relative ms-10 font-general text-sm uppercase text-blue-50 hover:text-pink-50 after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-black/50 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100 dark:after:bg-white cursor-pointer;
+    @apply relative ms-10 font-general text-lg uppercase text-blue-50 hover:text-pink-50 after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-black/50 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100 dark:after:bg-white cursor-pointer;
 
   }
 
@@ -76,7 +81,7 @@ body {
   }
 
   .heading {
-    @apply uppercase font-zentry font-black text-sm sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
+    @apply uppercase font-zentry font-black text-lg sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
   }
 
   .about-subtext {

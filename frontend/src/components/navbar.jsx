@@ -79,7 +79,7 @@ const NavBar = () => {
                 id="product-button"
                 title="Features"
                 rightIcon={<TiLocationArrow />}
-                containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1 !text-xs"
+                containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
               />
             </a>
           </div>

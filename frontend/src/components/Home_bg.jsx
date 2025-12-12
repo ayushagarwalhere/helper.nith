@@ -57,6 +57,7 @@ export default function Bg() {
   return (
     <div className="relative w-screen max-h-screen overflow-x-hidden bg-black/80 ">
     <div className="relative w-screen h-screen flex justify-center z-5 perspective-1000">
+      <h1 className="text-white text-9xl font-zentry">NIT HAMIRPUR</h1>
       <video
         ref={videoRef}
         autoPlay

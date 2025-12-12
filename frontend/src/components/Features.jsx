@@ -38,7 +38,16 @@ export const BentoTilt = ({ children, className = "" }) => {
   );
 };
 
-export const BentoCard = ({ src, title, description, isComingSoon, link}) => {
+export const BentoCard = ({
+  src,
+  title,
+  description,
+  isComingSoon,
+  link,
+  className = "",
+  style = {},
+  imgClass = "",
+}) => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [hoverOpacity, setHoverOpacity] = useState(0);
   const hoverButtonRef = useRef(null);
@@ -57,11 +66,11 @@ export const BentoCard = ({ src, title, description, isComingSoon, link}) => {
   const handleMouseLeave = () => setHoverOpacity(0);
 
   return (
-    <div className="relative size-full">
+    <div className={`relative size-full ${className}`} style={style}>
       <img
         src={src}
-        className="absolute left-0 top-0 size-full object-center"
-        
+        alt=""
+        className={`absolute left-0 top-[-64px] size-auto ${imgClass}`}
       />
       <div className="relative z-10 flex size-full flex-col justify-between p-5 text-blue-50">
         <div>
@@ -70,28 +79,28 @@ export const BentoCard = ({ src, title, description, isComingSoon, link}) => {
             <p className="mt-3 max-w-72 text-sm md:text-base">{description}</p>
           )}
         </div>
-      
+
         {isComingSoon && (
-        <a href={`/${link}`}>
-          <div
-            ref={hoverButtonRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-s uppercase text-white/20"
-          >
-            {/* Radial gradient hover effect */}
+          <a href={`/${link}`}>
             <div
-              className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
-              style={{
-                opacity: hoverOpacity,
-                background: `radial-gradient(30px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
-              }}
-            />
-            <TiLocationArrow className="relative z-20" />
-            <p className="relative z-20">enter</p>
-          </div>
-        </a>  
+              ref={hoverButtonRef}
+              onMouseMove={handleMouseMove}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-s uppercase text-white/20"
+            >
+              {/* Radial gradient hover effect */}
+              <div
+                className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+                style={{
+                  opacity: hoverOpacity,
+                  background: `radial-gradient(30px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
+                }}
+              />
+              <TiLocationArrow className="relative z-20" />
+              <p className="relative z-20">enter</p>
+            </div>
+          </a>
         )}
       </div>
     </div>
@@ -106,15 +115,16 @@ const Features = () => (
           Into the Metagame Layer
         </p>
         <p className="max-w-xl font-circular-web text-lg text-blue-50 opacity-50">
-          Immerse yourself in a dynamic and ever-evolving campus world where academics,
-          activities, and experiences converge into an interconnected journey shaping your college life.
+          Immerse yourself in a dynamic and ever-evolving campus world where
+          academics, activities, and experiences converge into an interconnected
+          journey shaping your college life.
         </p>
       </div>
 
       <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
         <BentoCard
           src="images/academic.guide.png"
-          className="!text-black"
+          className="!text-black "
           title={
             <>
               <span className="text-black">ACADEMIC GUIDE</span>
@@ -122,22 +132,22 @@ const Features = () => (
           }
           description={
             <>
-              <span className="text-blue-200 font-bold ">
-                "SEMESTER SYSTEM OVERVIEW
-                EXAMINATION & GRADING SYSTEM
-                ACADEMIC HELP & MENTORSHIP"
+              <span className="text-blue-200 font-bold  ">
+                "SEMESTER SYSTEM OVERVIEW EXAMINATION & GRADING SYSTEM ACADEMIC
+                HELP & MENTORSHIP"
               </span>
             </>
           }
           isComingSoon
-          link = "academic_guide"
+          link="academic_guide"
         />
       </BentoTilt>
 
       <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
         <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
           <BentoCard
-            src="images/campus.jpg"
+            src="images/campus.png"
+            imgClass="w-full size-auto object-cover"
             title={
               <span className="text-black">
                 <b>CAMPUS LIFE</b>
@@ -145,8 +155,8 @@ const Features = () => (
             }
             description={
               <span className="text-black">
-                "Embrace the opportunities, navigate the challenges, and make the most of your
-                campus life !!"
+                "Embrace the opportunities, navigate the challenges, and make
+                the most of your campus life !!"
               </span>
             }
             isComingSoon
@@ -168,7 +178,6 @@ const Features = () => (
                     "Lacking Notes? <br></br>
                     Consider it done."
                   </p>
-              
                 </span>
               </>
             }
@@ -178,15 +187,17 @@ const Features = () => (
 
         <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
           <BentoCard
-            src="images/clubs.soc.png"
+            src="images/clubs.png"
+            className="overflow-hidden rounded-md"
+            imgClass=" object-center size-auto"
             title={
-              <span className="relative left-52 bottom-8 text-4xl text-black" >
+              <span className="relative left-4 bottom-8 text-4xl text-white">
                 cl<b>u</b>bs & soci<b>t</b>ies
               </span>
             }
             description={
               <>
-                <span className="relative bottom-4 right-4 font-bold text-black">
+                <span className="relative bottom-4 right-4 left-4 font-bold text-white">
                   Find your tribe, <br></br>find your passion !!
                 </span>
               </>
@@ -204,7 +215,6 @@ const Features = () => (
             <TiLocationArrow className="m-5 scale-[5] self-end" />
           </div>
         </BentoTilt>
-
       </div>
     </div>
   </section>
