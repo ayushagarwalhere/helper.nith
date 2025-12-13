@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { TiLocationArrow } from "react-icons/ti";
 
 export const BentoTilt = ({ children, className = "" }) => {
@@ -48,6 +49,7 @@ export const BentoCard = ({
   style = {},
   imgClass = "",
 }) => {
+  const navigate = useNavigate();
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [hoverOpacity, setHoverOpacity] = useState(0);
   const hoverButtonRef = useRef(null);
@@ -65,6 +67,12 @@ export const BentoCard = ({
   const handleMouseEnter = () => setHoverOpacity(1);
   const handleMouseLeave = () => setHoverOpacity(0);
 
+  const handleNavigate = () => {
+    if (link) {
+      navigate(`/${link}`);
+    }
+  };
+
   return (
     <div className={`relative size-full ${className}`} style={style}>
       <img
@@ -80,27 +88,26 @@ export const BentoCard = ({
           )}
         </div>
 
-        {isComingSoon && (
-          <a href={`/${link}`}>
+        {isComingSoon && link && (
+          <div
+            onClick={handleNavigate}
+            ref={hoverButtonRef}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-s uppercase text-white/20"
+          >
+            {/* Radial gradient hover effect */}
             <div
-              ref={hoverButtonRef}
-              onMouseMove={handleMouseMove}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-s uppercase text-white/20"
-            >
-              {/* Radial gradient hover effect */}
-              <div
-                className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
-                style={{
-                  opacity: hoverOpacity,
-                  background: `radial-gradient(30px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
-                }}
-              />
-              <TiLocationArrow className="relative z-20" />
-              <p className="relative z-20">enter</p>
-            </div>
-          </a>
+              className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+              style={{
+                opacity: hoverOpacity,
+                background: `radial-gradient(30px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
+              }}
+            />
+            <TiLocationArrow className="relative z-20" />
+            <p className="relative z-20">enter</p>
+          </div>
         )}
       </div>
     </div>
@@ -123,7 +130,7 @@ const Features = () => (
 
       <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
         <BentoCard
-          src="images/academic.guide.png"
+          src="/images/features/academic.guide.png"
           className="!text-black "
           title={
             <>
@@ -139,14 +146,14 @@ const Features = () => (
             </>
           }
           isComingSoon
-          link="academic_guide"
+          link="academic-guide"
         />
       </BentoTilt>
 
       <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
         <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
           <BentoCard
-            src="images/campus.png"
+            src="/images/features/campus.png"
             imgClass="w-full size-auto object-cover"
             title={
               <span className="text-black">
@@ -160,12 +167,13 @@ const Features = () => (
               </span>
             }
             isComingSoon
+            link="campus"
           />
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
           <BentoCard
-            src="images/notes.helper.nith.png"
+            src="/images/features/notes.helper.nith.png"
             title={
               <>
                 <span className="text-black">notes</span>
@@ -187,7 +195,7 @@ const Features = () => (
 
         <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
           <BentoCard
-            src="images/clubs.png"
+            src="/images/features/clubs.png"
             className="overflow-hidden rounded-md"
             imgClass=" object-center size-auto"
             title={
@@ -203,6 +211,7 @@ const Features = () => (
               </>
             }
             isComingSoon
+            link="clubs"
           />
         </BentoTilt>
 
