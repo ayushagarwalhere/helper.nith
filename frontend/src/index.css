@@ -60,7 +60,7 @@ body {
   }
 
   .floating-nav {
-    @apply  bg-gray-700 rounded-3xl border;
+    @apply  bg-transparent rounded-3xl border;
   }
 
   .absolute-center {

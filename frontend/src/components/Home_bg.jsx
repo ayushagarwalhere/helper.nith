@@ -57,7 +57,7 @@ export default function Bg() {
   return (
     <div className="relative w-screen max-h-screen overflow-x-hidden bg-black/80 ">
     <div className="relative w-screen h-screen flex justify-center z-5 perspective-1000">
-      <h1 className="text-white text-9xl font-zentry">NIT HAMIRPUR</h1>
+      <h1 className="text-white text-9xl special-font"><b>HELPER.NITH</b></h1>
       <video
         ref={videoRef}
         autoPlay
@@ -69,7 +69,7 @@ export default function Bg() {
         style={{ transformStyle: "preserve-3d" }}
       />
       <div className="absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-12">
-      <h1 className="special-font flex gap-5  text-6xl text-white shadow-md shadow-blue-50">
+      <h1 className="special-font b flex gap-5  text-6xl text-white shadow-md shadow-blue-50">
         <b>YOUR</b>
         <b> ULTIMATE</b>
         <b> COLLEGE </b>

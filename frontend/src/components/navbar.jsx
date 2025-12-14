@@ -69,7 +69,7 @@ const NavBar = () => {
       className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
-        <nav className="flex size-full items-center justify-between rounded-md">
+        <nav className="flex size-full items-center justify-between rounded-md bg-transparent">
 
           <div className="flex items-center gap-7">
             <img src="/images/logo.png" alt="logo" className="w-16" />
@@ -82,7 +82,7 @@ const NavBar = () => {
                 containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
               />
             </a>
-          </div>
+          </div>  
 
           <div className="flex h-full items-center">
             <div className="hidden md:block">
@@ -126,7 +126,7 @@ const NavBar = () => {
       </header>
       {showLogin &&
         createPortal(
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90">
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-transparent">
             <div className="relative">
               <button
                 onClick={() => setShowLogin(false)}
@@ -141,7 +141,7 @@ const NavBar = () => {
         )}
       {showSignUp &&
         createPortal(
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50">
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-transparent">
             <div className="relative">
               <button
                 onClick={() => setShowSignUp(false)}
