@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 
-//YE AI hi hai dekh kr hasna mt abhi krana h ispe kaam...
 
 const AcademicCalendar = () => {
   const oddSemesterRef = useRef(null);
