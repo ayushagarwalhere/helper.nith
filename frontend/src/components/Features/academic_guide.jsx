@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { GlareCard } from "../glare-card";
 
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
@@ -37,6 +38,29 @@ export const BentoTilt = ({ children, className = "" }) => {
     </div>
   );
 };
+export function GlareCardDemo() {
+  return (
+    <GlareCard className="flex flex-col items-center justify-center">
+      <svg
+        width="66"
+        height="65"
+        viewBox="0 0 66 65"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-7 w-7 text-white"
+      >
+        <path
+          d="M8 8.05571C8 8.05571 54.9009 18.1782 57.8687 30.062C60.8365 41.9458 9.05432 57.4696 9.05432 57.4696"
+          stroke="currentColor"
+          strokeWidth="15"
+          strokeMiterlimit="3.86874"
+          strokeLinecap="round"
+        />
+      </svg>
+      <p className="text-white font-bold text-xl mt-4">Aceternity</p>
+    </GlareCard>
+  );
+}
 
 const academicCards = [
   {
@@ -70,7 +94,6 @@ const Academic_guide = () => {
   const [cards] = useState([...academicCards, ...academicCards]);
   const containerRef = useRef(null);
   const navigate = useNavigate();
-
   return (
     <div
       id="academic_guide"
@@ -89,18 +112,15 @@ const Academic_guide = () => {
           }}
         >
           {cards.map((card, index) => (
-            <BentoTilt key={`${card.id}-${index}`}>
-              <div
-                onClick={() => navigate(card.path)}
-                className="h-[450px] w-80 bg-blue-900 rounded-xl text-white flex-shrink-0 mx-4 overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-900/30"
-              >
+            <div key={`${card.id}-${index}`} className="flex-shrink-0" onClick={() => navigate(card.path)}>
+              <GlareCard className="cursor-pointer" colorScheme="default" bgColor="rgba(230, 245, 250, 0.9)" >
                 <div className="h-full w-full flex items-center justify-center p-6 text-center">
-                  <h3 className="text-4xl font-extralight font-zentry">
+                  <h3 className="text-2xl font-extralight font-zentry text-white">
                     {card.title}
                   </h3>
                 </div>
-              </div>
-            </BentoTilt>
+              </GlareCard>
+            </div>
           ))}
         </div>
       </div>

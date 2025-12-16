@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { TiLocationArrow } from "react-icons/ti";
+import { HeroParallax } from "./hero-parallax";
 
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
@@ -113,11 +114,49 @@ export const BentoCard = ({
     </div>
   );
 };
+const HeroParallaxSection = () => {
+  const products = [
+    {
+      src: "/images/features/academic.guide.png",
+      className: "!text-black",
+      title: "ACADEMIC GUIDE",
+      description: '"SEMESTER SYSTEM OVERVIEW EXAMINATION & GRADING SYSTEM ACADEMIC HELP & MENTORSHIP"',
+      isComingSoon: true,
+      link: "academic-guide",
+    },
+    {
+      src: "/images/features/campus.png",
+      imgClass: "w-full size-auto object-cover",
+      title: "CAMPUS LIFE",
+      description: '"Embrace the opportunities, navigate the challenges, and make the most of your campus life !!"',
+      isComingSoon: true,
+      link: "campus",
+    },
+    {
+      src: "/images/features/notes.helper.nith.png",
+      title: "notes",
+      description: '"Lacking Notes? Consider it done."',
+      isComingSoon: true,
+    },
+    {
+      src: "/images/features/clubs.png",
+      className: "overflow-hidden rounded-md",
+      imgClass: "object-center size-auto",
+      title: "clubs & societies",
+      description: '"Find your tribe, find your passion !!"',
+      isComingSoon: true,
+      link: "clubs",
+    },
+  ];
+  return <HeroParallax products={products}/>;
+};
+
+//check if looking good otherwise revert back to previous 
 
 const Features = () => (
   <section id="features" className="bg-black pb-52">
     <div className="container mx-auto px-3 md:px-10">
-      <div className="px-5 py-32">
+      <div className="px-5 py-10">
         <p className="font-circular-web text-lg text-blue-50">
           Into the Metagame Layer
         </p>
@@ -228,5 +267,5 @@ const Features = () => (
     </div>
   </section>
 );
-
-export default Features;
+export default HeroParallaxSection;
+// export default Features;

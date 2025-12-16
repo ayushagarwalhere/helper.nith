@@ -76,7 +76,33 @@ function App() {
             </Layout>
           }
         />
-
+        <Route
+          path="/features"
+          element={
+            <Layout>
+              <Navbar />
+              <Features />
+            </Layout>
+          }
+        />
+        <Route
+          path="/About"
+          element={
+            <Layout>
+              <Navbar />
+              <About />
+            </Layout>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <Layout>
+              <Navbar />
+              <Support />
+            </Layout>
+          }
+        />
         <Route
           path="/signup"
           element={
